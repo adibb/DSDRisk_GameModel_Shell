@@ -1,5 +1,4 @@
-/*
- * Dummy class for GameMaps.
- */
 public class GameMap {
+	private String 		name;
+	private Continent[] continents;
 }
