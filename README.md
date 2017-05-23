@@ -1,20 +1,20 @@
 # DSDRisk_GameModel_Shell #
 This code provides a shell class for the DSDRisk program. Written for CIS 423. Serves as a faux interface with 
 the GameModel module, so that others can test their integrations without needing or dealing with potential bugs 
-in the core module.
+in other modules.
 
 ### Usage ###
 The code provides a zero-functionality copy of the Game Model Controller (henceforth referred to as the GMC) 
 that can be used to test for compatibility issues with client modules. Methods intended to be called by other 
 modules return technically valid but useless results. These methods are:
 
-* _initGame(String pkg)_, which accepts a JSON Setup Package as described by the documentation on Assembla to 
+* _initGame(String pkg)_, which accepts a JSON SetupPackage as described by the documentation on Assembla to 
 set up the game's starting conditions and persistent values. The shell will only check to see if it can parse 
-the provided package correctly. We expect GameSetup to call this before passing us off to the GameManager.
-* _update(GameState gs)_, which accepts a GameState object. The real module will use this to start the player's 
-turn or update the map to account for another's. The shell will simply pass the given GameState back. We expect 
-GameManager to call this whenever it needs to pass off new information about the game to the client or trigger a 
-turn.
+the provided package correctly. We expect GameSetup to call this before passing the GMC off to the GameManager.
+* _update(String pkg)_, which accepts a JSON GameState as described by the documentation on Assembla. The real 
+GMC will use this to start the player's turn or update the map to account for another's. The shell will simply 
+pass the given GameState back. We expect GameManager to call this whenever it needs to pass off new information 
+about the game to the client or trigger a turn.
 
 The shell relies on Google's JSON package (Gson), which is included in the library folder /lib/. The source 
 folder /src/ contains further dummy classes that mimic how the GameModel breaks down the incoming JSON and what 
