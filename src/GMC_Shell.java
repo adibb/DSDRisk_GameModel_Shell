@@ -5,7 +5,7 @@
  * to worry about the real GMC being the source of the bugs.
  * 
  * Written on 5/15/2017 by Alex Dibb. 
- * Updated on 5/22/2017 by Alex Dibb.
+ * Updated on 5/25/2017 by Alex Dibb.
  */
 
 import com.google.gson.Gson;
@@ -22,16 +22,14 @@ public class GMC_Shell {
         }
     }
     
-    public GameState update(String pkg){
+    public String update(String pkg){
         try {
-            GameState result = gson.fromJson(pkg, GameState.class);
-            System.out.println("OUT: Got GameState " + result);
-            return result;
+            gson.fromJson(pkg, GameState.class);
+            System.out.println("OUT: Got GameState " + pkg);
         } catch (Exception e) {
             System.err.println("ERR: Bad fromJson() result for : " + pkg);
             System.err.println("     Threw exception: " + e);
-            System.out.println("OUT: Bad JSON, returning new GameState.");
-            return new GameState();
         }
+        return pkg;
     }
 }

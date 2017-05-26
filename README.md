@@ -13,8 +13,11 @@ set up the game's starting conditions and persistent values. The shell will only
 the provided package correctly. We expect GameSetup to call this before passing the GMC off to the GameManager.
 * _update(String pkg)_, which accepts a JSON GameState as described by the documentation on Assembla. The real 
 GMC will use this to start the player's turn or update the map to account for another's. The shell will simply 
-pass the given GameState back. We expect GameManager to call this whenever it needs to pass off new information 
-about the game to the client or trigger a turn.
+pass the given GameState JSON back. We expect GameManager to call this whenever it needs to pass off new 
+information about the game to the client or trigger a turn.
+
+In both cases, the shell prints the results of attempting to parse the JSON to standard output or standard
+error depending on whether it was successful.
 
 The shell relies on Google's JSON package (Gson), which is included in the library folder /lib/. The source 
 folder /src/ contains further dummy classes that mimic how the GameModel breaks down the incoming JSON and what 
